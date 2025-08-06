@@ -27,7 +27,7 @@ export const agencyData = {
         project: {
           title: 'Mudita Rest & Wellness',
           description: 'Mudita Rest & Wellness is a private retreat center in Portland, Jamaica. We are under contract for full stack design and development; logo, branding, web design, and development.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
           links: [{ label: 'Coming Soon', url: 'mudita.rest/' }],
         },
       },
@@ -38,7 +38,7 @@ export const agencyData = {
         project: {
           title: 'HomeBase Studio',
           description: 'Home Base Studio is a community studio space in Seattle, Washington. We are under contract for full stack design and development; logos, branding, web design and development, and go-to-market strategy.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
         {
@@ -48,7 +48,7 @@ export const agencyData = {
         project: {
           title: 'Higher Ground Healing',
           description: 'Higher Ground Healing is a mobile private body-healing practice founded by Sydnee Turner. We are under contract for full stack design and development; logos, branding, web design and development, and go-to-market strategy.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
        {
@@ -58,7 +58,7 @@ export const agencyData = {
         project: {
           title: 'Rev. Ivet',
           description: 'Reverend Ivet is an interfaith minister offering a suite of individual, ceremonial, and communal healing services. We are under contract for full stack design and development; logos, personal branding, web design and development.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
       {
@@ -68,7 +68,7 @@ export const agencyData = {
         project: {
           title: 'Ash Cake Press',
           description: 'Ash Cake Press is an independent book publisher. We are under contract for graphics and web development.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
     ] as Client[],
@@ -80,7 +80,7 @@ export const agencyData = {
         project: {
           title: 'Tripper Clothing',
           description: 'Tripper Clothing is a streetwear brand based in Pittsburgh, Pennsylvania. We collaborated with Tripper Clothing on video production for a short-run fashion show.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
       {
@@ -90,7 +90,7 @@ export const agencyData = {
         project: {
           title: 'The Future is Black',
           description: 'The Future is Black is a community organization focused on catalyzing artistic expression and fostering a profound sense of belonging. We are under contract for a series of ethnographic video documentations.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
         {
@@ -100,7 +100,7 @@ export const agencyData = {
         project: {
           title: 'Slappers + Bangers',
           description: 'Slappers + Bangers is a production company in Pittsburgh, Pennsylvania hosting large community social events. We were contracted to produce video documentation of several events. ',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
        {
@@ -110,7 +110,7 @@ export const agencyData = {
         project: {
           title: 'BAAD.ENTERTAINMENT',
           description: 'Baad Entertainment is a production company in Pittsburgh, Pennsylvania. We were contracted to produce video documentation of several events.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
+          images: [],
         },
       },
       {
@@ -120,8 +120,8 @@ export const agencyData = {
         project: {
           title: 'Reparations Bank of America',
           description: 'The Reparations Bank of America is an artistic simulation. We were contracted to help with graphics and branding, as well as web design + development.',
-          images: ['https://placehold.co/600x400.png', 'https://placehold.co/600x400.png'],
-          links: [{ label: 'Case Study', url: '#' }],
+          images: [],
+          links: [{ label: 'Case Study', url: 'https://www.reparationsbank.us/' }],
         },
       },
     ] as Client[],
