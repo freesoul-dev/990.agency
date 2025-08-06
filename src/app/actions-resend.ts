@@ -1,7 +1,9 @@
 'use server';
 
 import { z } from 'zod';
-import nodemailer from 'nodemailer';
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const contactSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters long.' }),
@@ -9,7 +11,7 @@ const contactSchema = z.object({
   message: z.string().min(10, { message: 'Message must be at least 10 characters long.' }),
 });
 
-export async function submitContactForm(prevState: any, formData: FormData) {
+export async function submitContactFormResend(prevState: any, formData: FormData) {
   const validatedFields = contactSchema.safeParse({
     name: formData.get('name'),
     email: formData.get('email'),
@@ -26,19 +28,9 @@ export async function submitContactForm(prevState: any, formData: FormData) {
   const { name, email, message } = validatedFields.data;
 
   try {
-    // Create transporter for sending emails
-    const transporter = nodemailer.createTransporter({
-      service: 'gmail', // You can change this to other services like 'outlook', 'yahoo', etc.
-      auth: {
-        user: process.env.EMAIL_USER, // Your email address
-        pass: process.env.EMAIL_PASS, // Your email password or app password
-      },
-    });
-
-    // Email content
-    const mailOptions = {
-      from: process.env.EMAIL_USER,
-      to: 'hello@990.agency',
+    const { data, error } = await resend.emails.send({
+      from: 'Contact Form <noreply@990.agency>', // Replace with your verified domain
+      to: ['hello@990.agency'],
       subject: `New Contact Form Submission from ${name}`,
       html: `
         <h2>New Contact Form Submission</h2>
@@ -58,10 +50,15 @@ export async function submitContactForm(prevState: any, formData: FormData) {
         
         This message was sent from the contact form on your website.
       `,
-    };
+    });
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    if (error) {
+      console.error('Error sending email:', error);
+      return {
+        message: 'Sorry, there was an error sending your message. Please try again later.',
+        errors: {},
+      };
+    }
 
     return {
       message: 'Thank you for your message! We will get back to you soon.',
@@ -74,4 +71,4 @@ export async function submitContactForm(prevState: any, formData: FormData) {
       errors: {},
     };
   }
-}
+} 

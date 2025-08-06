@@ -2,7 +2,8 @@
 
 import { useActionState, useEffect } from 'react';
 import { useFormStatus } from 'react-dom';
-import { submitContactForm } from '@/app/actions';
+// import { submitContactForm } from '@/app/actions';
+import { submitContactFormResend } from '@/app/actions-resend';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -19,7 +20,7 @@ function SubmitButton() {
 
 export default function ContactForm() {
   const initialState = { message: null, errors: {} };
-  const [state, dispatch] = useActionState(submitContactForm, initialState);
+  const [state, dispatch] = useActionState(submitContactFormResend, initialState);
   const { toast } = useToast();
 
   useEffect(() => {
