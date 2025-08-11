@@ -24,14 +24,32 @@ export default function ClientModal({ client, isOpen, onOpenChange }: ClientModa
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="flex flex-col space-y-4">
                   {mainImage && (
-                      <div className="aspect-video relative w-full">
-                          <Image src={mainImage} alt="Main project image" fill className="object-cover rounded-lg" data-ai-hint="abstract design" />
+                      <div className="w-full">
+                          <Image 
+                              src={mainImage} 
+                              alt="Main project image" 
+                              width={0}
+                              height={0}
+                              sizes="100vw"
+                              className="w-auto h-auto max-w-full rounded-lg" 
+                              data-ai-hint="abstract design"
+                              unoptimized
+                          />
                       </div>
                   )}
                    <div className="grid grid-cols-2 gap-4">
                       {additionalImages.map((src, index) => (
-                        <div key={index} className="aspect-video relative">
-                          <Image src={src} alt={`Additional project image ${index + 1}`} fill className="object-cover rounded-lg" data-ai-hint="technology abstract" />
+                        <div key={index} className="w-full">
+                          <Image 
+                              src={src} 
+                              alt={`Additional project image ${index + 1}`} 
+                              width={0}
+                              height={0}
+                              sizes="50vw"
+                              className="w-auto h-auto max-w-full rounded-lg" 
+                              data-ai-hint="technology abstract"
+                              unoptimized
+                          />
                         </div>
                       ))}
                   </div>
