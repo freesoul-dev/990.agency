@@ -27,7 +27,7 @@ export const agencyData = {
         project: {
           title: 'Mudita Rest & Wellness',
           description: 'Mudita Rest & Wellness is a private retreat center in Portland, Jamaica. We are under contract for full stack design and development; logo, branding, web design, and development. They need a single page app that allows them to articulate their services and offerings, and allows prospective clients to inquire.  Email and forms are handled with Resend API. There is a prominent Tamarind tree on the property, which informed our sketch logo. Total project timeline: 4-6 weeks.',
-          images: [ '/images/mudita/home.png', '/images/mudita/inquiry.png', '/images/mudita/mudita_logo_w_text.png', ],
+          images: [ 'https://990-agency.b-cdn.net/images/mudita/home.png', 'https://990-agency.b-cdn.net/images/mudita/inquiry.png', 'https://990-agency.b-cdn.net/images/mudita/mudita_logo_w_text.png', ],
           links: [{ label: 'Coming Soon', url: 'mudita.rest/' }],
         },
       },
@@ -38,7 +38,7 @@ export const agencyData = {
         project: {
           title: 'The Future is Black',
           description: 'The Future is Black is a community organization focused on catalyzing artistic expression and fostering a profound sense of belonging. We are production partners for a series of ethnographic video documentations of the creative community in Pittsburgh, PA. Project timeline: 12-16 weeks.',
-          images: [ '/images/thefutureisblack/th_at_lab_tfib.jpeg' ],
+          images: [ 'https://990-agency.b-cdn.net/images/thefutureisblack/th_at_lab_tfib.jpeg' ],
         },
       },
       {
@@ -90,7 +90,7 @@ export const agencyData = {
         project: {
           title: 'Reparations Bank of America',
           description: 'The Reparations Bank of America is an artistic simulation. We were contracted to help with copy, graphics, and branding. We also provided web design + development.',
-          images: [ '/images/rba/rba_web.png', '/images/rba/Billboard.png', '/images/rba/Bus_Stop_Citylight.png', ],
+          images: [ 'https://990-agency.b-cdn.net/images/rba/rba_web.png', 'https://990-agency.b-cdn.net/images/rba/Billboard.png', 'https://990-agency.b-cdn.net/images/rba/Bus_Stop_Citylight.png', ],
           links: [{ label: 'Reparations Bank of America', url: 'https://www.reparationsbank.us/' }],
         },
       },
