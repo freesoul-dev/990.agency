@@ -111,7 +111,7 @@ export const agencyData = {
         project: {
           title: 'Slappers + Bangers',
           description: 'Slappers + Bangers is a production company in Pittsburgh, Pennsylvania hosting large community social events. We were contracted to produce video documentation of several events. ',
-          images: [ 'https://990-agency.b-cdn.net/snb_06152025.mp4' ],
+          images: [ 'https://990-agency.b-cdn.net/snb_06152025.mov' ],
         },
       },
        {
