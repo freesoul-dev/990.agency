@@ -40,10 +40,10 @@ const webServices: Service[] = [
 ];
 
 const videoServices: Service[] = [
-  { name: 'Camera Fee (Sony a7S III)', rate: '$70', notes: 'Flat fee for camera system use', color: '#C45AA9' },
-  { name: '4K Filming Rate', rate: '$55 - $70 per hour', notes: 'Sliding scale based on project complexity/duration', color: '#C45AA9' },
+  { name: 'Camera Fee (Sony a7S III)', rate: '$79', notes: 'Flat fee for camera system use', color: '#C45AA9' },
+  { name: '4K Filming Rate', rate: '$55 - $75 per hour', notes: 'Sliding scale based on project complexity/duration', color: '#C45AA9' },
   { name: 'Drone Fee (DJI Mini 3 Pro)', rate: '$70', notes: 'Flat fee for drone use', color: '#C45AA9' },
-  { name: '4K Drone Footage', rate: '$50 per hour', notes: 'Hourly rate for 4K aerial footage', color: '#C45AA9' },
+  { name: '4K Drone Footage', rate: '$60 - $100 per hour', notes: 'Hourly rate for 4K aerial footage. Sliding scale based on project complexity/duration', color: '#C45AA9' },
   { name: 'Editing (Adobe Premiere Pro or CapCut Pro)', rate: '$35 - $65 per hour', notes: 'Sliding scale based on project duration', color: '#C45AA9' },
 ];
 
