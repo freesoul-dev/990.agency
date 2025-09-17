@@ -28,7 +28,7 @@ export const agencyData = {
           title: 'Mudita Rest & Wellness',
           description: 'Mudita Rest & Wellness is a private retreat center in Portland, Jamaica. We are under contract for full stack design and development; logo, branding, web design, and development. They need a single page app that allows them to articulate their services and offerings, and allows prospective clients to inquire.  Email and forms are handled with Resend API. There is a prominent Tamarind tree on the property, which informed our sketch logo. Total project timeline: 4-6 weeks.',
           images: [ 'https://990-agency.b-cdn.net/images/mudita/home.png', 'https://990-agency.b-cdn.net/images/mudita/inquiry.png', 'https://990-agency.b-cdn.net/images/mudita/mudita_logo_w_text.png', ],
-          links: [{ label: 'Live', url: 'mudita.rest/' }],
+          links: [{ label: 'Live', url: 'https://www.mudita.rest/' }],
         },
       },
       {
