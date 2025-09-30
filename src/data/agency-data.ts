@@ -13,9 +13,7 @@ export interface Client {
 export const agencyData = {
   services: [
     { name: 'Visual Design' },
-    { name: 'Branding' },
     { name: 'Web Design & Development' },
-    { name: 'Graphics' },
     { name: 'Video Production' },
   ],
   clients: {
@@ -128,7 +126,7 @@ export const agencyData = {
   },
   teammates: [
     { name: 'Freesoul El Shabazz', role: 'Porject Manager & Creative Technologist', avatarUrl: 'https://placehold.co/100x100.png' },
-    { name: 'Mathis Rushin', role: 'Creative Technologist', avatarUrl: 'https://placehold.co/100x100.png' },
+    { name: 'First name Last name', role: 'Creative Technologist', avatarUrl: 'https://placehold.co/100x100.png' },
     { name: '', role: '', avatarUrl: '' },
     { name: '', role: '', avatarUrl: '' },
     { name: '', role: '', avatarUrl: '' }

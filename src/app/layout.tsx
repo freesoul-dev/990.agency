@@ -1,6 +1,8 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
+import SiteHeader from '@/components/site-header';
+import SiteFooter from '@/components/site-footer';
 
 export const metadata: Metadata = {
   title: 'Agency990',
@@ -23,7 +25,9 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet"></link>
       </head>
       <body className="font-body antialiased">
+        <SiteHeader />
         {children}
+        <SiteFooter />
         <Toaster />
       </body>
     </html>

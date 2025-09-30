@@ -56,6 +56,23 @@
   body {
     @apply bg-background text-foreground;
   }
+/* Hide native horizontal scrollbar track so background remains black */
+html, body {
+  overscroll-behavior-x: contain;
+}
+
+/* Hide scrollbars globally to avoid intercepting edge clicks */
+*::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+  html, body {
+    background-color: hsl(var(--background)) !important;
+    color: hsl(var(--foreground)) !important;
+  }
 }
 
 @font-face {
@@ -115,4 +132,33 @@
 
 .animate-fade-in {
   animation: fade-in 0.5s ease-in-out forwards;
+}
+
+@keyframes swipe-hint-right {
+  0% { transform: translateX(0); opacity: 0.4; }
+  50% { transform: translateX(6px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 0.4; }
+}
+
+.animate-swipe-hint-right {
+  animation: swipe-hint-right 1.4s ease-in-out infinite;
+}
+
+@keyframes bounce-hint {
+  0%, 100% { transform: translateX(0); opacity: 0.3; }
+  50% { transform: translateX(4px); opacity: 0.6; }
+}
+
+.animate-bounce-hint {
+  animation: bounce-hint 2s ease-in-out infinite;
+}
+
+@keyframes header-flash {
+  0% { text-shadow: 0 0 0 rgba(255,255,255,0); }
+  50% { text-shadow: 0 0 12px rgba(255,255,255,0.8); }
+  100% { text-shadow: 0 0 0 rgba(255,255,255,0); }
+}
+
+.animate-header-flash {
+  animation: header-flash 0.35s ease-in-out;
 }

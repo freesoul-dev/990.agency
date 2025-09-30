@@ -1,6 +1,13 @@
-'use client';
-
+import type { Metadata } from 'next';
 import React from 'react';
+
+// Route-level metadata to discourage indexing
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 // Define interfaces for better type safety
 interface Service {
@@ -20,18 +27,6 @@ const visualDesignServices: Service[] = [
   { name: 'UI/UX Design', rate: '$45 - $65 per hour', notes: 'User interface and experience design for digital products', color: '#CC001F' },
   { name: 'Visual Identity Design', rate: '$50 - $70 per hour', notes: 'Complete visual identity systems and brand guidelines', color: '#CC001F' },
   { name: 'Print Design', rate: '$40 - $60 per hour', notes: 'Business cards, brochures, posters, and other print materials', color: '#CC001F' },
-];
-
-const brandingServices: Service[] = [
-  { name: 'Brand Strategy', rate: '$60 - $80 per hour', notes: 'Brand positioning, messaging, and strategy development', color: '#FFBA08' },
-  { name: 'Logo Design', rate: '$300 - $800 per logo', notes: 'Custom logo design with multiple concepts and revisions', color: '#FFBA08' },
-  { name: 'Brand Guidelines', rate: '$500 - $1,200', notes: 'Comprehensive brand style guide and usage documentation', color: '#FFBA08' },
-];
-
-const graphicsServices: Service[] = [
-  { name: 'Digital Graphics', rate: '$35 - $55 per hour', notes: 'Social media graphics, digital ads, and web graphics', color: '#3BCECE' },
-  { name: 'Illustration', rate: '$45 - $65 per hour', notes: 'Custom illustrations and digital artwork', color: '#3BCECE' },
-  { name: 'Photo Editing', rate: '$30 - $50 per hour', notes: 'Photo retouching, color correction, and manipulation', color: '#3BCECE' },
 ];
 
 const webServices: Service[] = [
@@ -109,18 +104,6 @@ const PricingPage: React.FC = () => {
             title="Visual Design Services" 
             services={visualDesignServices} 
             color="#CC001F" 
-          />
-          
-          <ServiceSection 
-            title="Branding Services" 
-            services={brandingServices} 
-            color="#FFBA08" 
-          />
-          
-          <ServiceSection 
-            title="Graphics Services" 
-            services={graphicsServices} 
-            color="#3BCECE" 
           />
           
           <ServiceSection 

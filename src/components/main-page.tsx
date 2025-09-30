@@ -25,11 +25,9 @@ function Header() {
        990
       </h1>
       <p className="font-body text-4xl text-justify max-w-xl px-2 py-4 my-32">
-        We are a full stack creative agency offering{' '}
+        We do{' '}
         <span style={{ color: '#CC001F' }}>Visual Design</span>,{' '}
-        <span style={{ color: '#FFBA08' }}>Branding</span>,{' '}
-        <span style={{ color: '#2C6CB5' }}>Web Design & Development</span>,{' '}
-        <span style={{ color: '#3BCECE' }}>Graphics</span>, and{' '}
+        <span style={{ color: '#2C6CB5' }}>Web Design & Development</span>, and{' '}
         <span style={{ color: '#C45AA9' }}>Video Production</span>.
       </p>
     </header>
