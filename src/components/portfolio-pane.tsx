@@ -10,16 +10,30 @@ function MediaRenderer({ media }: { media: PortfolioMedia }) {
   if (media.type === 'video') {
     return (
       <video
-        className="w-full h-auto border border-white/20"
+        className="w-full h-auto max-h-[70vh] object-contain border border-white/20"
         controls
         playsInline
         preload="metadata"
         poster={media.poster}
+        autoPlay
+        muted
+        loop
       >
         <source src={media.src} type="video/mp4" />
       </video>
     );
   }
+  
+  if (media.type === 'text') {
+    return (
+      <div className="border border-white/20 p-6 bg-black/20">
+        <p className="font-body text-white/90 leading-relaxed whitespace-pre-line">
+          {media.content}
+        </p>
+      </div>
+    );
+  }
+  
   return (
     <Image
       src={media.src}

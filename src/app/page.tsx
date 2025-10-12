@@ -200,8 +200,8 @@ export default function Home() {
         <section data-slug="offerings" className="min-w-full h-full p-6 overflow-y-auto border border-white/20">
           <div className="min-h-full flex items-center justify-center">
             <div className="max-w-xl">
-              <h1 className="font-headPrimary text-3xl mb-4">Agency #990</h1>
-              <p className="font-body text-lg">Visual Design, Web Design & Development, Video Production</p>
+              <h1 className="font-headPrimary text-6xl mb-4">Agency 990</h1>
+              {/* <p className="font-body text-lg">Visual Design, Web Design & Development, Video Production</p> */}
             </div>
           </div>
         </section>

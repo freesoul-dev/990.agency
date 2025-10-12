@@ -10,9 +10,9 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        headPrimary: ['Ferry-Black'],
-        headSecondary: ['ClashDisplay-Light'],
-        body: ['ClashDisplay-Regular'],
+        headPrimary: ['Blakulla-Regular'],
+        headSecondary: ['SF Pro Display Ultralight'],
+        body: ['SF Pro Display Ultralight'],
         code: ['monospace'],
       },
       colors: {
