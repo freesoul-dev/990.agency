@@ -16,9 +16,9 @@ export default function Home() {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [enableTransition, setEnableTransition] = useState<boolean>(true);
-  const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [dragOffset, setDragOffset] = useState<number>(0);
+  const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
 
   const scrollToSlug = (slug: string) => {
     const realIdx = realSlugs.findIndex(s => s === slug);
@@ -39,22 +39,6 @@ export default function Home() {
   }, []);
 
   // Back-to-top visibility: show when global footer enters viewport AND active pane is a portfolio pane
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const footer = document.querySelector('footer');
-    if (!footer) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const isFooterVisible = entries.some((e) => e.isIntersecting);
-        const currentSlug = realSlugs[activeIndex];
-        const isPortfolio = currentSlug.startsWith('placeholder-');
-        setShowBackToTop(isFooterVisible && isPortfolio);
-      },
-      { root: null, threshold: 0.01 }
-    );
-    observer.observe(footer);
-    return () => observer.disconnect();
-  }, [activeIndex, realSlugs]);
 
   // Safety mechanism: ensure we always snap to complete pane positions
   useEffect(() => {
@@ -62,6 +46,35 @@ export default function Home() {
       setDragOffset(0);
     }
   }, [isDragging]);
+
+  // Back-to-top button: show when scrolled down in portfolio panes
+  useEffect(() => {
+    const currentSlug = realSlugs[activeIndex];
+    const isPortfolio = currentSlug.startsWith('placeholder-');
+    
+    if (!isPortfolio) {
+      setShowBackToTop(false);
+      return;
+    }
+
+    const handleScroll = () => {
+      const currentPane = document.querySelector(`section[data-slug="${currentSlug}"]`) as HTMLElement;
+      if (currentPane) {
+        const scrollTop = currentPane.scrollTop;
+        setShowBackToTop(scrollTop > 200); // Show after scrolling 200px down
+      }
+    };
+
+    const currentPane = document.querySelector(`section[data-slug="${currentSlug}"]`) as HTMLElement;
+    if (currentPane) {
+      currentPane.addEventListener('scroll', handleScroll);
+      handleScroll(); // Check initial state
+      
+      return () => {
+        currentPane.removeEventListener('scroll', handleScroll);
+      };
+    }
+  }, [activeIndex, realSlugs]);
 
   const getCurrentIndex = () => activeIndex;
 
@@ -196,24 +209,26 @@ export default function Home() {
           </div>
         </section>
         </div>
-      {showBackToTop && (
-        <button
-          onClick={() => {
-            // Scroll the window to top so the nav bar is back in view
-            if (typeof window !== 'undefined') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            // Also scroll the main container and current pane to top
-            scrollerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-            const slug = realSlugs[activeIndex];
-            const pane = document.querySelector(`section[data-slug="${slug}"]`) as HTMLElement | null;
-            pane?.scrollTo({ top: 0, behavior: 'smooth' });
-          }}
-          className="fixed bottom-6 right-6 z-40 px-4 py-2 bg-black border border-white/30 text-white text-sm font-body hover:bg-white hover:text-black transition-colors"
-        >
-          back to top
-        </button>
-      )}
+        
+        {/* Back to top button */}
+        {showBackToTop && (
+          <button
+            onClick={() => {
+              // Scroll the window to top so the nav bar is back in view
+              if (typeof window !== 'undefined') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+              // Also scroll the main container and current pane to top
+              scrollerRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
+              const slug = realSlugs[activeIndex];
+              const pane = document.querySelector(`section[data-slug="${slug}"]`) as HTMLElement | null;
+              pane?.scrollTo({ top: 0, behavior: 'smooth' });
+            }}
+            className="fixed bottom-6 right-6 z-40 px-4 py-2 bg-black border border-white/30 text-white text-sm font-body hover:bg-white hover:text-black transition-colors"
+          >
+            back to top
+          </button>
+        )}
         </div>
   );
 }
