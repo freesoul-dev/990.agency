@@ -15,9 +15,6 @@ export default function Home() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [enableTransition, setEnableTransition] = useState<boolean>(true);
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [dragOffset, setDragOffset] = useState<number>(0);
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
 
   const scrollToSlug = (slug: string) => {
@@ -40,12 +37,6 @@ export default function Home() {
 
   // Back-to-top visibility: show when global footer enters viewport AND active pane is a portfolio pane
 
-  // Safety mechanism: ensure we always snap to complete pane positions
-  useEffect(() => {
-    if (!isDragging) {
-      setDragOffset(0);
-    }
-  }, [isDragging]);
 
   // Back-to-top button: show when scrolled down in portfolio panes
   useEffect(() => {
@@ -80,60 +71,31 @@ export default function Home() {
 
   const scrollToIndex = (index: number) => {
     const clamped = ((index % realLen) + realLen) % realLen;
-    setEnableTransition(true);
     setActiveIndex(clamped);
-    // Ensure we're always at a complete pane position
-    setDragOffset(0);
-    setIsDragging(false);
     if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('nav-edge'));
   };
 
-  // Touch gesture handlers for mobile swipe with snap-back
+  // Simple touch handlers for card swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
-    setIsDragging(true);
-    setDragOffset(0);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (!touchStart) return;
-    
-    const currentX = e.targetTouches[0].clientX;
-    const distance = touchStart - currentX;
-    setTouchEnd(currentX);
-    
-    // Update drag offset for visual feedback during drag
-    // Limit the drag offset to prevent extreme positions
-    const maxOffset = window.innerWidth * 0.3; // Max 30% of screen width
-    setDragOffset(Math.max(-maxOffset, Math.min(maxOffset, distance)));
+    setTouchEnd(e.targetTouches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) {
-      setIsDragging(false);
-      setDragOffset(0);
-      return;
-    }
+    if (!touchStart || !touchEnd) return;
     
     const distance = touchStart - touchEnd;
-    const threshold = 50; // Reduced threshold for easier navigation
-    const isLeftSwipe = distance > threshold;
-    const isRightSwipe = distance < -threshold;
-
-    // Always snap to a complete pane - never stay in between
-    if (isLeftSwipe) {
-      scrollNext();
-    } else if (isRightSwipe) {
-      scrollPrev();
-    } else {
-      // Snap back to current panel
-      setEnableTransition(true);
-      setActiveIndex(activeIndex);
-    }
+    const threshold = 50;
     
-    setIsDragging(false);
-    setDragOffset(0);
+    if (distance > threshold) {
+      scrollNext();
+    } else if (distance < -threshold) {
+      scrollPrev();
+    }
   };
 
   const scrollNext = () => {
@@ -180,8 +142,8 @@ export default function Home() {
         ref={trackRef}
         className="h-full flex snap-x snap-mandatory [&>*]:snap-center [&>*]:snap-always relative"
                style={{
-                 transform: `translateX(calc(${-100 * activeIndex}vw + ${isDragging ? dragOffset : 0}px))`,
-                 transition: enableTransition ? 'transform 250ms ease-out' : 'none',
+                 transform: `translateX(${-100 * activeIndex}vw)`,
+                 transition: 'transform 300ms ease-out',
                }}
       >
         {/* Offerings pane */}
