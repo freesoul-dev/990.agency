@@ -15,10 +15,10 @@ export default function Home() {
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isBouncing, setIsBouncing] = useState<boolean>(false);
-  const [bounceOffset, setBounceOffset] = useState<number>(0); // in vw (0 or -3)
   const [enableTransition, setEnableTransition] = useState<boolean>(true);
   const [showBackToTop, setShowBackToTop] = useState<boolean>(false);
+  const [isDragging, setIsDragging] = useState<boolean>(false);
+  const [dragOffset, setDragOffset] = useState<number>(0);
 
   const scrollToSlug = (slug: string) => {
     const realIdx = realSlugs.findIndex(s => s === slug);
@@ -56,66 +56,12 @@ export default function Home() {
     return () => observer.disconnect();
   }, [activeIndex, realSlugs]);
 
-  // Slide-bounce hint: peek second pane by ~3% and back; double bounce every ~6s
+  // Safety mechanism: ensure we always snap to complete pane positions
   useEffect(() => {
-    // Only run once per session on initial load
-    if (typeof window === 'undefined') return;
-    if (!trackRef.current) return;
-
-    let stopped = false;
-    const stopBounce = () => {
-      if (stopped) return;
-      // Only stop if we are no longer on the first real pane (index 0)
-      if (activeIndex !== 0) {
-        stopped = true;
-        setIsBouncing(false);
-        setBounceOffset(0);
-        // remove listeners
-        window.removeEventListener('nav-edge', stopBounce as any);
-      }
-    };
-
-    // Stop on navigation via swipe or edge clicks
-    window.addEventListener('nav-edge', stopBounce as any);
-
-    setIsBouncing(true);
-
-    // Perform a double-bounce: out -> back -> out -> back, then wait ~6s and repeat
-    const doDoubleBounce = () => {
-      if (stopped) return;
-      // amplitude: desktop ~2vw, mobile ~3vw
-      const amt = (window.innerWidth >= 768) ? -2 : -3;
-      // step 1: out
-      setBounceOffset(amt);
-      setTimeout(() => {
-        if (stopped) return;
-        // step 2: back
-        setBounceOffset(0);
-        setTimeout(() => {
-          if (stopped) return;
-          // step 3: out again
-          setBounceOffset(amt);
-    setTimeout(() => {
-            if (stopped) return;
-            // step 4: back
-            setBounceOffset(0);
-          }, 350);
-        }, 350);
-      }, 350);
-    };
-
-    // initial run after a short delay to allow layout
-    const startTimeout = setTimeout(doDoubleBounce, 600);
-    // repeat every ~6s
-    const interval = setInterval(doDoubleBounce, 6000);
-
-    return () => {
-      clearTimeout(startTimeout);
-      clearInterval(interval);
-      stopBounce();
-    };
-  }, []);
-
+    if (!isDragging) {
+      setDragOffset(0);
+    }
+  }, [isDragging]);
 
   const getCurrentIndex = () => activeIndex;
 
@@ -123,31 +69,58 @@ export default function Home() {
     const clamped = ((index % realLen) + realLen) % realLen;
     setEnableTransition(true);
     setActiveIndex(clamped);
+    // Ensure we're always at a complete pane position
+    setDragOffset(0);
+    setIsDragging(false);
     if (typeof window !== 'undefined') window.dispatchEvent(new CustomEvent('nav-edge'));
   };
 
-  // Touch gesture handlers for mobile swipe
+  // Touch gesture handlers for mobile swipe with snap-back
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
+    setIsDragging(true);
+    setDragOffset(0);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    if (!touchStart) return;
+    
+    const currentX = e.targetTouches[0].clientX;
+    const distance = touchStart - currentX;
+    setTouchEnd(currentX);
+    
+    // Update drag offset for visual feedback during drag
+    // Limit the drag offset to prevent extreme positions
+    const maxOffset = window.innerWidth * 0.3; // Max 30% of screen width
+    setDragOffset(Math.max(-maxOffset, Math.min(maxOffset, distance)));
   };
 
   const handleTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (!touchStart || !touchEnd) {
+      setIsDragging(false);
+      setDragOffset(0);
+      return;
+    }
     
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const threshold = 50; // Reduced threshold for easier navigation
+    const isLeftSwipe = distance > threshold;
+    const isRightSwipe = distance < -threshold;
 
+    // Always snap to a complete pane - never stay in between
     if (isLeftSwipe) {
       scrollNext();
     } else if (isRightSwipe) {
       scrollPrev();
+    } else {
+      // Snap back to current panel
+      setEnableTransition(true);
+      setActiveIndex(activeIndex);
     }
+    
+    setIsDragging(false);
+    setDragOffset(0);
   };
 
   const scrollNext = () => {
@@ -172,29 +145,31 @@ export default function Home() {
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
     >
-      {/* Invisible clickable edge regions (mobile + desktop) - overlay on content area only (below 56px nav) */}
+      {/* Clickable edge regions with visual indicators */}
       <button
         type="button"
         onClick={scrollPrev}
-        className="fixed top-14 bottom-0 left-0 w-16 bg-transparent cursor-pointer z-30"
+        className="fixed top-14 bottom-0 left-0 w-16 bg-transparent hover:bg-white/5 cursor-pointer z-30 flex items-center justify-center group"
         aria-label="Previous panel"
       >
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity text-white/60 text-2xl">←</div>
       </button>
       <button
         type="button"
         onClick={scrollNext}
-        className="fixed top-14 bottom-0 right-0 w-16 bg-transparent cursor-pointer z-30"
+        className="fixed top-14 bottom-0 right-0 w-16 bg-transparent hover:bg-white/5 cursor-pointer z-30 flex items-center justify-center group"
         aria-label="Next panel"
       >
+        <div className="opacity-0 group-hover:opacity-100 transition-opacity text-white/60 text-2xl">→</div>
       </button>
 
       <div
         ref={trackRef}
         className="h-full flex snap-x snap-mandatory [&>*]:snap-center [&>*]:snap-always relative"
-        style={{
-          transform: `translateX(calc(${-100 * activeIndex}vw + ${(activeIndex === 0 ? bounceOffset : 0)}vw))`,
-          transition: enableTransition ? (isBouncing ? 'transform 350ms ease-in-out' : 'transform 250ms ease-out') : 'none',
-        }}
+               style={{
+                 transform: `translateX(calc(${-100 * activeIndex}vw + ${isDragging ? dragOffset : 0}px))`,
+                 transition: enableTransition ? 'transform 250ms ease-out' : 'none',
+               }}
       >
         {/* Offerings pane */}
         <section data-slug="offerings" className="min-w-full h-full p-6 overflow-y-auto border border-white/20">

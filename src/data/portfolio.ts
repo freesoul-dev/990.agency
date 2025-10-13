@@ -30,12 +30,12 @@ export const portfolio: PortfolioItem[] = [
     media: [
       
       { type: 'image', src: '/images/mudita/home.png', alt: 'Mudita Home' },
+      { type: 'image', src: '/images/mudita/inquiry.png', alt: 'Mudita Inquiry' },
+      { type: 'image', src: '/images/mudita/mudita_logo_w_text.png', alt: 'Mudita Logo' },
       { 
         type: 'text', 
         content: 'A comprehensive brand identity project for Mudita, focusing on clean, minimalist design principles. The project encompassed logo design, web interface development, brand guidelines, and backend for Resend API email handling.' 
       },
-      { type: 'image', src: '/images/mudita/inquiry.png', alt: 'Mudita Inquiry' },
-      { type: 'image', src: '/images/mudita/mudita_logo_w_text.png', alt: 'Mudita Logo' },
     ],
   },
   {
@@ -44,12 +44,12 @@ export const portfolio: PortfolioItem[] = [
     slug: 'placeholder-3',
     tags: ['visual', 'video'],
     media: [
+      { type: 'video', src: '', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
+      { type: 'image', src: '/images/thefutureisblack/th_at_lab_tfib.jpeg', alt: 'TFIB' },
       { 
         type: 'text', 
         content: 'The Future is Black is a community organization focused on catalyzing artistic expression and fostering a profound sense of belonging. We are production partners for a series of ethnographic video documentations of the creative community in Pittsburgh, PA. Project timeline: 12-16 weeks.' 
       },
-      { type: 'video', src: '', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
-      { type: 'image', src: '/images/thefutureisblack/th_at_lab_tfib.jpeg', alt: 'TFIB' },
       // Example for video: add your MP4 to /public/videos and reference here
       // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
     ],
@@ -60,11 +60,11 @@ export const portfolio: PortfolioItem[] = [
     slug: 'placeholder-4',
     tags: ['visual', 'video'],
     media: [
+      { type: 'video', src: 'https://990-agency.b-cdn.net/videos/hw_clip.mp4', alt: 'HW' },
       {
         type: 'text', 
         content: 'Honest Work of art is  art-focused, Community-focused, and deeply rooted in the pursuit of a racially equitable arts landscape. We partnered to produce video documentation of their most recent event at the Museum Lab in Pittsburgh, PA.' 
       },
-      { type: 'video', src: 'https://990-agency.b-cdn.net/videos/hw_clip.mp4', alt: 'HW' },
       // Example for video: add your MP4 to /public/videos and reference here
       // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
     ],
@@ -75,11 +75,11 @@ export const portfolio: PortfolioItem[] = [
     slug: 'placeholder-5',
     tags: ['video'],
     media: [
+      { type: 'video', src: 'https://990-agency.b-cdn.net/videos/24s_clip.mp4', alt: 'ML' },
       {
         type: 'text', 
         content: 'Merce Lemon is a Pittsburgh-based Musician. We partnered to produce video documentation of her most recent event.' 
       },
-      { type: 'video', src: 'https://990-agency.b-cdn.net/videos/24s_clip.mp4', alt: 'ML' },
       // Example for video: add your MP4 to /public/videos and reference here
       // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
     ],
@@ -90,11 +90,11 @@ export const portfolio: PortfolioItem[] = [
     slug: 'placeholder-6',
     tags: ['video'],
     media: [
+      { type: 'video', src: 'https://990-agency.b-cdn.net/snb_06152025.mov', alt: 'SNB' },
       {
         type: 'text',
         content: 'Slappers + Bangers is a production company in Pittsburgh, Pennsylvania hosting large community social events. We were contracted to produce video documentation of several events. '
       },
-      { type: 'video', src: 'https://990-agency.b-cdn.net/snb_06152025.mov', alt: 'SNB' },
       // Example for video: add your MP4 to /public/videos and reference here
       // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
     ],
