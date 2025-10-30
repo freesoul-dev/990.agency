@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: '990-agency.b-cdn.net',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

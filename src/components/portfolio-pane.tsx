@@ -48,7 +48,7 @@ function MediaRenderer({ media }: { media: PortfolioMedia }) {
 
 export default function PortfolioPane({ item }: PortfolioPaneProps) {
   return (
-    <section data-slug={item.slug} className="min-w-full h-full p-6 overflow-y-auto border border-white/20">
+    <section data-slug={item.slug} className="min-w-full h-full p-6 overflow-y-auto md:overflow-y-auto overflow-x-hidden border border-white/20">
       <div className="min-h-full mx-auto max-w-3xl">
         <h2 className="font-headSecondary text-2xl mb-4">{item.title}</h2>
         <div className="space-y-4">

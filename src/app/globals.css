@@ -55,6 +55,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    @apply text-xs;
   }
 /* Hide native horizontal scrollbar track so background remains black */
 html, body {

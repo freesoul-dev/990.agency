@@ -12,8 +12,8 @@ export default {
       fontFamily: {
         headPrimary: ['Blakulla-Regular'],
         headSecondary: ['SF Pro Display Ultralight'],
-        body: ['SF Pro Display Ultralight'],
-        code: ['monospace'],
+        body: ['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','Liberation Mono','monospace'],
+        code: ['ui-monospace','SFMono-Regular','Menlo','Monaco','Consolas','Liberation Mono','monospace'],
       },
       colors: {
         background: 'hsl(var(--background))',
