@@ -24,7 +24,7 @@ const InvoicePage = () => {
 
   // State for invoice details
   const [invoiceDetails, setInvoiceDetails] = useState({
-    invoiceNumber: 'INV-2024-001',
+    invoiceNumber: 'INV-2025-001',
     invoiceDate: new Date().toISOString().slice(0, 10), // YYYY-MM-DD
     dueDate: new Date(new Date().setDate(new Date().getDate() + 30)).toISOString().slice(0, 10), // 30 days from now
   });
@@ -366,7 +366,7 @@ const InvoicePage = () => {
           <textarea
             className="w-full p-3 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 resize-y"
             rows={4}
-            defaultValue="Payment is due within 30 days of the invoice date. Late payments may incur a fee of 1.5% per month."
+            defaultValue="Payment is due within 7 days of the invoice date. Late payments may incur a fee of 1.5% per day."
           ></textarea>
         </div>
 
