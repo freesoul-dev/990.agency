@@ -99,23 +99,23 @@ export const portfolio: PortfolioItem[] = [
       // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
     ],
   },
-  {
-    id: 'p5',
-    title: 'RBA',
-    slug: 'placeholder-5',
-    tags: ['web', 'visual'],
-    media: [
-      { type: 'image', src: 'https://990-agency.b-cdn.net/images/rba/Billboard.png', alt: 'RBA' },
-      { type: 'image', src: 'https://990-agency.b-cdn.net/images/rba/Bus_Stop_Citylight.png', alt: 'RBA' },
-      { type: 'image', src: 'https://990-agency.b-cdn.net/images/rba/rba_web.png', alt: 'RBA' },
-      {
-        type: 'text', 
-        content: 'The Reparations Bank of America is an artistic simulation. We were contracted to help with copy, graphics, and branding. We also provided web design + development.',
-      },
-      // Example for video: add your MP4 to /public/videos and reference here
-      // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
-    ],
-  },
+  // {
+  //   id: 'p5',
+  //   title: 'RBA',
+  //   slug: 'placeholder-5',
+  //   tags: ['web', 'visual'],
+  //   media: [
+  //     { type: 'image', src: 'https://990-agency.b-cdn.net/images/rba/Billboard.png', alt: 'RBA' },
+  //     { type: 'image', src: 'https://990-agency.b-cdn.net/images/rba/Bus_Stop_Citylight.png', alt: 'RBA' },
+  //     { type: 'image', src: 'https://990-agency.b-cdn.net/images/rba/rba_web.png', alt: 'RBA' },
+  //     {
+  //       type: 'text', 
+  //       content: 'The Reparations Bank of America is an artistic simulation. We were contracted to help with copy, graphics, and branding. We also provided web design + development.',
+  //     },
+  //     // Example for video: add your MP4 to /public/videos and reference here
+  //     // { type: 'video', src: '/videos/tfib-reel.mp4', poster: '/images/thefutureisblack/poster.jpg', alt: 'TFIB Reel' },
+  //   ],
+  // },
   {
     id: 'p6',
     title: 'Slappers + Bangers',

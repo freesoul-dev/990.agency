@@ -81,17 +81,17 @@ export const agencyData = {
       },
     ] as Client[],
     past: [
-      {
-        id: 7,
-        name: 'Reparations Bank of America',
-        logoUrl: '/logos/curl.png',
-        project: {
-          title: 'Reparations Bank of America',
-          description: 'The Reparations Bank of America is an artistic simulation. We were contracted to help with copy, graphics, and branding. We also provided web design + development.',
-          images: [ 'https://990-agency.b-cdn.net/images/rba/rba_web.png', 'https://990-agency.b-cdn.net/images/rba/Billboard.png', 'https://990-agency.b-cdn.net/images/rba/Bus_Stop_Citylight.png', ],
-          links: [{ label: 'Reparations Bank of America', url: 'https://www.reparationsbank.us/' }],
-        },
-      },
+      // {
+      //   id: 7,
+      //   name: 'Reparations Bank of America',
+      //   logoUrl: '/logos/curl.png',
+      //   project: {
+      //     title: 'Reparations Bank of America',
+      //     description: 'The Reparations Bank of America is an artistic simulation. We were contracted to help with copy, graphics, and branding. We also provided web design + development.',
+      //     images: [ 'https://990-agency.b-cdn.net/images/rba/rba_web.png', 'https://990-agency.b-cdn.net/images/rba/Billboard.png', 'https://990-agency.b-cdn.net/images/rba/Bus_Stop_Citylight.png', ],
+      //     links: [{ label: 'Reparations Bank of America', url: 'https://www.reparationsbank.us/' }],
+      //   },
+      // },
        {
         id: 8,
         name: 'Tripper Clothing',
