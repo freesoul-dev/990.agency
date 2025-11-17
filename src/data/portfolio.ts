@@ -23,6 +23,22 @@ export interface PortfolioItem {
 // Drop-in: add PNG/JPG/MP4 files to public/images/... and reference their paths below
 export const portfolio: PortfolioItem[] = [
   {
+    id: 'p',
+    title: 'Meet Dandy',
+    slug: 'placeholder',
+    tags: ['visual'],
+    media: [
+      
+      { type: 'image', src: '/images/dandy/2/A.png', poster: '/images/dandy/2/A.png', alt: 'Dandy' },
+      { type: 'image', src: '/images/dandy/2/B.png', alt: 'Dandy' },
+      { type: 'image', src: '/images/dandy/2/C.png', alt: 'Dandy' },
+      { 
+        type: 'text', 
+        content: 'contract work for Dandy.' 
+      },
+    ],
+  },
+  {
     id: 'p0',
     title: 'Honest Works of Art',
     slug: 'placeholder-0',
